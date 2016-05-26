@@ -1,0 +1,53 @@
+﻿<Window x:Class="RutheniumReader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="521" Width="612">
+    <DockPanel LastChildFill="True">
+        <DockPanel LastChildFill="true" Dock="Bottom">
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <Button Grid.Column="0" Grid.Row="0" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center">Take Screen Snippet ...</Button>
+                <Button Grid.Column="1" Grid.Row="0" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center">Load Image File ...</Button>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Column="0" Grid.Row="0" Height="Auto" Margin="5" VerticalAlignment="Center">Code Type Found:</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="0" Height="Auto" Margin="5" VerticalAlignment="Center">Code 93</TextBlock>
+                
+                <TextBlock Grid.Column="0" Grid.Row="1" Height="Auto" Margin="5" VerticalAlignment="Top">Code Found:</TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="1" MinHeight="40">COOOODDDDDDEEEES</TextBox>
+            </Grid>
+        </DockPanel>
+        <Image Width="300" Height="300"></Image>
+        
+
+        <!-- UPC-A -->
+        <!-- UPC-E -->
+        <!-- EAN-8 -->
+        <!-- Code 39 -->
+        <!-- Code 93 -->
+        <!-- ITF -->
+        <!-- Codabar -->
+        <!-- MSI -->
+        <!-- RSS-14 -->
+        <!-- QR Code -->
+        <!-- Data Matrix -->
+        <!-- Aztec -->
+        <!-- PDF-417 -->
+    </DockPanel>
+</Window>
