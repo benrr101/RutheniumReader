@@ -38,7 +38,7 @@
                 <TextBox Grid.Column="1" Grid.Row="1" MinHeight="40" Text="{Binding BarcodeValue}"/>
             </Grid>
         </DockPanel>
-        <Image Visibility="{Binding ImageLoaded, Converter={StaticResource BoolToVisibilityHidden}, FallbackValue=Hidden}"></Image>
+        <Image Margin="10" Visibility="{Binding ImageLoaded, Converter={StaticResource BoolToVisibilityHidden}, FallbackValue=Hidden}" Source="{Binding ImageFilePath}"/>
         
 
         <!-- UPC-A -->

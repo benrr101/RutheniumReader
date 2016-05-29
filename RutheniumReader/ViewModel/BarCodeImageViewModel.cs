@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Input;
 using RutheniumReader.Commands;
+using ZXing;
 
 namespace RutheniumReader.ViewModel
 {
@@ -63,6 +65,18 @@ namespace RutheniumReader.ViewModel
             }
         }
 
+        private string _imageFilePath;
+        public string ImageFilePath
+        {
+            get { return _imageFilePath; }
+            set
+            {
+                _imageFilePath = value;
+                OnPropertyChanged("ImageFilePath");
+                ReadBarcode(value);
+            }
+        }
+
         #endregion
 
         #region IPropertyChanged Interface Implementation
@@ -81,5 +95,29 @@ namespace RutheniumReader.ViewModel
         public ICommand LoadImageFileCommand { get; private set; }
 
         #endregion
+
+        private void ReadBarcode(string imagePath)
+        {
+            // Load the image that was provided
+            Bitmap bitmap = new Bitmap(Image.FromFile(imagePath));
+            ImageLoaded = true;
+
+            // Read the barcode from the image
+            IBarcodeReader reader = new BarcodeReader();
+            Result barcodeResult = reader.Decode(bitmap);
+
+            // Attempt to retrieve the info from the barcode result
+            if (barcodeResult != null)
+            {
+                BarcodeType = barcodeResult.BarcodeFormat.ToString();
+                BarcodeValue = barcodeResult.Text;
+                BarcodeLoaded = true;
+            }
+            else
+            {
+                // Couldn't find a barcode in the image. 
+                // TODO: Show an error message
+            }
+        }
     }
 }
