@@ -1,8 +1,10 @@
 ﻿<Application x:Class="RutheniumReader.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:appConverters="clr-namespace:RutheniumReader.Converters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityCollapsed"></BooleanToVisibilityConverter>
+        <appConverters:BoolToVisibilityHidden x:Key="BoolToVisibilityHidden"></appConverters:BoolToVisibilityHidden>
     </Application.Resources>
 </Application>

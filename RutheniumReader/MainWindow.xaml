@@ -1,7 +1,11 @@
 ﻿<Window x:Class="RutheniumReader.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="521" Width="612">
+        Title="MainWindow" Height="521" Width="612"
+        xmlns:viewModel="clr-namespace:RutheniumReader.ViewModel">
+    <Window.DataContext>
+        <viewModel:BarCodeImageViewModel/>
+    </Window.DataContext>
     <DockPanel LastChildFill="True">
         <DockPanel LastChildFill="true" Dock="Bottom">
             <Grid DockPanel.Dock="Top">
@@ -33,7 +37,7 @@
                 <TextBox Grid.Column="1" Grid.Row="1" MinHeight="40">COOOODDDDDDEEEES</TextBox>
             </Grid>
         </DockPanel>
-        <Image Width="300" Height="300"></Image>
+        <Image Visibility="{Binding ImageLoaded, Converter={StaticResource BoolToVisibilityHidden}, FallbackValue=Hidden}"></Image>
         
 
         <!-- UPC-A -->
