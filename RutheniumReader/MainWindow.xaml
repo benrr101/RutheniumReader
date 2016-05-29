@@ -18,9 +18,10 @@
                 </Grid.RowDefinitions>
                 
                 <Button Grid.Column="0" Grid.Row="0" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center">Take Screen Snippet ...</Button>
-                <Button Grid.Column="1" Grid.Row="0" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center">Load Image File ...</Button>
+                <Button Grid.Column="1" Grid.Row="0" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Command="{Binding Path=LoadImageFileCommand}">Load Image File ...</Button>
             </Grid>
-            <Grid>
+            <Grid Visibility="{Binding BarcodeLoaded, Converter={StaticResource BoolToVisibilityCollapsed}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" />
                     <ColumnDefinition Width="*" />
@@ -31,10 +32,10 @@
                 </Grid.RowDefinitions>
                 
                 <TextBlock Grid.Column="0" Grid.Row="0" Height="Auto" Margin="5" VerticalAlignment="Center">Code Type Found:</TextBlock>
-                <TextBlock Grid.Column="1" Grid.Row="0" Height="Auto" Margin="5" VerticalAlignment="Center">Code 93</TextBlock>
-                
+                <TextBlock Grid.Column="1" Grid.Row="0" Height="Auto" Margin="5" VerticalAlignment="Center" Text="{Binding BarcodeType}"/>
+
                 <TextBlock Grid.Column="0" Grid.Row="1" Height="Auto" Margin="5" VerticalAlignment="Top">Code Found:</TextBlock>
-                <TextBox Grid.Column="1" Grid.Row="1" MinHeight="40">COOOODDDDDDEEEES</TextBox>
+                <TextBox Grid.Column="1" Grid.Row="1" MinHeight="40" Text="{Binding BarcodeValue}"/>
             </Grid>
         </DockPanel>
         <Image Visibility="{Binding ImageLoaded, Converter={StaticResource BoolToVisibilityHidden}, FallbackValue=Hidden}"></Image>

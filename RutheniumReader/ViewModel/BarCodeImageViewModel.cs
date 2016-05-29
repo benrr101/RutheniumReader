@@ -1,9 +1,17 @@
 ﻿using System.ComponentModel;
+using System.Windows.Input;
+using RutheniumReader.Commands;
 
 namespace RutheniumReader.ViewModel
 {
     internal class BarCodeImageViewModel : INotifyPropertyChanged
     {
+
+        public BarCodeImageViewModel()
+        {
+            // Initialize the commands to use
+            LoadImageFileCommand = new LoadImageFileCommand(this);
+        }
 
         #region UI-Bound Properties
 
@@ -31,6 +39,30 @@ namespace RutheniumReader.ViewModel
             }
         }
 
+        private string _barcodeType;
+
+        public string BarcodeType
+        {
+            get { return _barcodeType; }
+            set
+            {
+                _barcodeType = value;
+                OnPropertyChanged("BarcodeType");
+            }
+        }
+
+        private string _barcodeValue;
+
+        public string BarcodeValue
+        {
+            get { return _barcodeValue; }
+            set
+            {
+                _barcodeValue = value;
+                OnPropertyChanged("BarcodeValue");
+            }
+        }
+
         #endregion
 
         #region IPropertyChanged Interface Implementation
@@ -41,6 +73,12 @@ namespace RutheniumReader.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        #endregion
+
+        #region Commands
+
+        public ICommand LoadImageFileCommand { get; private set; }
 
         #endregion
     }
